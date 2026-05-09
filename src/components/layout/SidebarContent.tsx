@@ -1,34 +1,35 @@
-import { LayoutDashboard, Settings, User } from 'lucide-react'
-import Link from 'next/link'
+"use client";
+
+import { sidebarLinks } from "@/lib/constants";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const SidebarContent = () => {
+  const pathname = usePathname();
+
   return (
     <>
-      <div className="px-6 h-16 flex items-center text-xl font-bold text-white border-b border-slate-800">
-        BrandLogo
+      <div className="text-primary flex h-16 items-center border-b px-6 text-xl font-semibold">
+        Healthcare
       </div>
-      <nav className="flex-1 p-4 space-y-2">
-        <Link
-          href="/"
-          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"
-        >
-          <LayoutDashboard size={20} /> Dashboard
-        </Link>
-        <Link
-          href="/users"
-          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"
-        >
-          <User size={20} /> Users
-        </Link>
-        <Link
-          href="/settings"
-          className="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"
-        >
-          <Settings size={20} /> Settings
-        </Link>
+      <nav className="flex-1 space-y-2 p-3">
+        {sidebarLinks?.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+              pathname === link.href
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+            }`}
+          >
+            {link.icon}
+            {link.label}
+          </Link>
+        ))}
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default SidebarContent
+export default SidebarContent;
