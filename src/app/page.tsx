@@ -1,5 +1,7 @@
+import { redirect } from 'next/navigation'
+
 const Home = () => {
-  return <main>Home</main>
+  return redirect('/dashboard')
 }
 
 export default Home
