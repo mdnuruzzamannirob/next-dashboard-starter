@@ -10,8 +10,8 @@ export const MobileSidebar = () => {
       </SheetTrigger>
       <SheetContent side="left" className="max-w-64! min-w-64 border-none p-0">
         <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-        <aside className="flex h-full flex-col overflow-y-auto">
-          <SidebarContent />
+        <aside className="flex h-full flex-col overflow-hidden">
+          <SidebarContent closeOnNavigate />
         </aside>
       </SheetContent>
     </Sheet>
