@@ -16,9 +16,9 @@ const UserMenu = () => {
         alt={user.name}
         width={28}
         height={28}
-        className="size-9 rounded-lg object-cover"
+        className="size-9 shrink-0 rounded-lg object-cover"
       />
-      <div className="hidden md:flex md:flex-col">
+      <div className="hidden lg:flex lg:flex-col">
         <h3 className="text-sm font-semibold">{user.name}</h3>
         <p className="text-muted-foreground text-xs">{user.role}</p>
       </div>

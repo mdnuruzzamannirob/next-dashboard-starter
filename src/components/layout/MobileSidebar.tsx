@@ -5,7 +5,7 @@ import SidebarContent from "./SidebarContent";
 export const MobileSidebar = () => {
   return (
     <Sheet>
-      <SheetTrigger className="flex size-9 items-center justify-center rounded-lg bg-gray-100">
+      <SheetTrigger className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-gray-100">
         <Menu size={18} />
       </SheetTrigger>
       <SheetContent side="left" className="max-w-64! min-w-64 border-none p-0">

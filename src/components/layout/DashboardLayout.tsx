@@ -1,20 +1,19 @@
-import DesktopSidebar from './DesktopSidebar'
-import Header from './Header'
+import DesktopSidebar from "./DesktopSidebar";
+import Header from "./Header";
 
 export default function DashboardLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-dvh flex">
+    <div className="flex min-h-dvh">
       <DesktopSidebar />
 
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex min-w-0 flex-1 flex-col">
         <Header />
-
-        <main className="flex-1 p-6 bg-gray-100">{children}</main>
+        <main className="flex-1 bg-gray-100 p-6">{children}</main>
       </div>
     </div>
-  )
+  );
 }
