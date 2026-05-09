@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ForgotPasswordPage() {
   return (
-    <main className="w-full max-w-md space-y-6 rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
+    <main className="w-full max-w-md space-y-6 rounded-lg border border-gray-200 bg-white p-6">
       {/* Header */}
       <div className="space-y-2 text-center">
         <Logo />
