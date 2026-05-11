@@ -1,15 +1,8 @@
 "use client";
 
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
 import { Bell, Clock3 } from "lucide-react";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Notification = () => {
   const notifications = [
@@ -34,46 +27,65 @@ const Notification = () => {
   ];
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <div className="relative flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-gray-100">
-          <Bell size={18} />
-          <span className="absolute -top-0.5 -right-0.5 size-2 rounded-full bg-red-600" />
-        </div>
-      </DropdownMenuTrigger>
+    <Popover>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="group relative flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-gray-100 transition-colors duration-200 hover:bg-gray-200"
+        >
+          <Bell size={18} className="text-slate-700" />
+          <span className="absolute -top-0.5 -right-0.5 size-2 rounded-full bg-red-600 shadow-sm" />
+        </button>
+      </PopoverTrigger>
 
-      <DropdownMenuContent
+      <PopoverContent
         align="end"
-        className="w-80 min-w-80 rounded-lg border border-gray-200 bg-white p-2 ring-transparent"
+        sideOffset={8}
+        className="w-96 overflow-hidden rounded-xl -mt-1 bg-white p-0"
       >
-        <DropdownMenuLabel className="flex items-center justify-between px-2 py-1.5">
-          <span className="text-foreground text-sm font-semibold">Notifications</span>
-          <span className="text-muted-foreground text-xs font-medium">3 new</span>
-        </DropdownMenuLabel>
+        {/* Header */}
+        <div className="flex items-center justify-between rounded-t-xl px-4 py-3">
+          <h3 className="text-sm font-bold">Notifications</h3>
+          <span className="bg-primary/10 text-primary inline-flex items-center rounded-lg px-2.5 py-0.5 text-xs font-semibold">
+            {notifications.length} new
+          </span>
+        </div>
 
-        <DropdownMenuSeparator />
+        <Separator className="m-0 bg-gray-100" />
 
-        {notifications.map((item) => (
-          <DropdownMenuItem
-            key={item.id}
-            className="!focus:bg-transparent !focus:text-slate-800 block rounded-md px-2 py-2 data-highlighted:bg-transparent data-highlighted:text-slate-800"
-          >
-            <p className="text-foreground text-sm font-medium">{item.title}</p>
-            <p className="text-muted-foreground mt-0.5 text-xs">{item.message}</p>
-            <p className="text-muted-foreground mt-2 flex items-center gap-1 text-xs">
-              <Clock3 className="size-3" />
-              {item.time}
-            </p>
-          </DropdownMenuItem>
-        ))}
+        {/* Notifications List */}
+        <div className="max-h-96 overflow-y-auto">
+          <div className="space-y-0">
+            {notifications.map((item, index) => (
+              <div key={item.id}>
+                <button
+                  type="button"
+                  className="w-full px-4 py-4 text-left transition-colors duration-150 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+                >
+                  <p className="text-sm font-semibold">{item.title}</p>
+                  <p className="text-muted-foreground mt-2 text-xs">{item.message}</p>
+                  <p className="text-muted-foreground mt-2 flex items-center gap-1 text-xs">
+                    <Clock3 className="size-3" />
+                    {item.time}
+                  </p>
+                </button>
+                {index < notifications.length - 1 && <Separator className="m-0 bg-gray-100" />}
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <DropdownMenuSeparator />
+        <Separator className="m-0 bg-gray-100" />
 
-        <DropdownMenuItem className="!focus:bg-transparent !focus:text-slate-700 text-muted-foreground justify-center py-2 text-sm font-medium data-highlighted:bg-transparent data-highlighted:text-gray-700">
+        {/* Footer */}
+        <button
+          type="button"
+          className="text-primary w-full px-4 py-3 text-center text-xs font-semibold transition-colors duration-150 hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
+        >
           View all notifications
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </button>
+      </PopoverContent>
+    </Popover>
   );
 };
 
