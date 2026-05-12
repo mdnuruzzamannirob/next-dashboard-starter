@@ -33,7 +33,7 @@ const Notification = () => {
           type="button"
           className="group relative flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-gray-100 transition-colors duration-200 hover:bg-gray-200"
         >
-          <Bell size={18} className="text-slate-700" />
+          <Bell size={18} className="text-gray-700" />
           <span className="absolute -top-0.5 -right-0.5 size-2 rounded-full bg-red-600 shadow-sm" />
         </button>
       </PopoverTrigger>
@@ -41,10 +41,10 @@ const Notification = () => {
       <PopoverContent
         align="end"
         sideOffset={8}
-        className="w-96 overflow-hidden rounded-xl -mt-1 bg-white p-0"
+        className="-mt-1 w-96 overflow-hidden rounded-xl bg-white p-0"
       >
         {/* Header */}
-        <div className="flex items-center justify-between rounded-t-xl px-4 py-3">
+        <div className="flex items-center justify-between rounded-t-xl p-3">
           <h3 className="text-sm font-bold">Notifications</h3>
           <span className="bg-primary/10 text-primary inline-flex items-center rounded-lg px-2.5 py-0.5 text-xs font-semibold">
             {notifications.length} new
@@ -60,7 +60,7 @@ const Notification = () => {
               <div key={item.id}>
                 <button
                   type="button"
-                  className="w-full px-4 py-4 text-left transition-colors duration-150 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+                  className="w-full p-3 text-left transition-colors duration-200 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
                 >
                   <p className="text-sm font-semibold">{item.title}</p>
                   <p className="text-muted-foreground mt-2 text-xs">{item.message}</p>
@@ -80,7 +80,7 @@ const Notification = () => {
         {/* Footer */}
         <button
           type="button"
-          className="text-primary w-full px-4 py-3 text-center text-xs font-semibold transition-colors duration-150 hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
+          className="text-primary hover:bg-primary/5 focus:bg-primary/5 w-full p-3 text-center text-xs font-semibold transition-colors duration-150 focus:outline-none"
         >
           View all notifications
         </button>

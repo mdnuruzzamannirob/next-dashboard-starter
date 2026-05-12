@@ -1,9 +1,9 @@
 "use client";
 
+import { ChevronDown, LogOut, Settings, UserCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, LogOut, Settings, UserCircle } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
@@ -43,22 +43,22 @@ const UserMenu = () => {
       <PopoverTrigger asChild>
         <button
           type="button"
-          className="group flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 transition-colors duration-200 hover:bg-gray-100"
+          className="group flex cursor-pointer items-center gap-2 rounded-lg"
         >
           <Image
             src={user.avatar}
             alt={user.name}
             width={36}
             height={36}
-            className="size-9 shrink-0 rounded-lg object-cover shadow-sm"
+            className="size-9 shrink-0 rounded-lg object-cover"
           />
 
-          <div className="hidden lg:flex lg:flex-col">
-            <p className="text-sm font-semibold">{user.name}</p>
-            <p className="text-muted-foreground text-xs">{user.role}</p>
+          <div className="hidden lg:flex lg:flex-col lg:items-start">
+            <p className="text-sm leading-tight font-semibold">{user.name}</p>
+            <p className="text-muted-foreground text-xs leading-tight">{user.role}</p>
           </div>
 
-          <ChevronDown className="hidden size-4 text-gray-500 transition-transform duration-200 group-hover:rotate-180 lg:block" />
+          <ChevronDown className="hidden size-4 text-muted-foreground transition-transform duration-200 group-hover:rotate-180 lg:block" />
         </button>
       </PopoverTrigger>
 
@@ -67,14 +67,14 @@ const UserMenu = () => {
         sideOffset={8}
         className="-mt-1 w-64 overflow-hidden rounded-xl bg-white p-0"
       >
-        <div className="px-4 py-4">
+        <div className="p-3">
           <div className="flex items-center gap-3">
             <Image
               src={user.avatar}
               alt={user.name}
               width={48}
               height={48}
-              className="size-12 rounded-lg object-cover shadow-md"
+              className="size-12 rounded-lg shrink-0 object-cover"
             />
 
             <div className="min-w-0 flex-1">
@@ -95,10 +95,10 @@ const UserMenu = () => {
               <Link
                 key={label}
                 href={href}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 [&_svg]:size-4 ${
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 [&_svg]:size-4 ${
                   isActive
-                    ? "bg-primary text-white"
-                    : "hover:bg-primary/10 hover:text-primary text-slate-700"
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-primary/10 hover:text-primary text-muted-foreground"
                 }`}
               >
                 <Icon />
@@ -109,7 +109,7 @@ const UserMenu = () => {
 
           <Link
             href={logoutItem.href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-600 transition-all duration-150 hover:bg-red-50 [&_svg]:size-4"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-600 transition-all duration-200 hover:bg-red-50 [&_svg]:size-4"
           >
             <logoutItem.icon />
             {logoutItem.label}
