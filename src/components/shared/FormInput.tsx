@@ -34,7 +34,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
               ${icon ? 'pl-10' : ''}
               ${endAdornment ? 'pr-10' : ''}
               ${error ? 'border-red-500' : 'border-gray-300'}
-              focus:outline-none focus:ring-2 ${error ? 'focus:ring-red-500' : 'focus:ring-blue-500'} focus:border-transparent
+              focus:outline-none focus:ring-2 ${error ? 'focus:ring-red-500' : 'focus:ring-primary'} focus:border-transparent
               disabled:bg-gray-50 disabled:text-gray-500
               transition-all
               ${className}

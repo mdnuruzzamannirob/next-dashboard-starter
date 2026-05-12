@@ -129,7 +129,7 @@ export function VerifyEmailForm() {
               className={`
                 h-12 w-12 rounded-lg border px-3 py-2 text-center text-xl font-semibold
                 ${errors.code ? 'border-red-500' : 'border-gray-300'}
-                focus:outline-none focus:ring-2 focus:border-transparent ${errors.code ? 'focus:ring-red-500' : 'focus:ring-blue-500'}
+                focus:outline-none focus:ring-2 focus:border-transparent ${errors.code ? 'focus:ring-red-500' : 'focus:ring-primary'}
                 transition-all
               `}
             />
@@ -146,7 +146,7 @@ export function VerifyEmailForm() {
       <button
         type="submit"
         disabled={isLoading || code.length < 6}
-        className="w-full rounded-lg bg-blue-600 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-50 transition-colors"
+        className="w-full rounded-lg bg-primary py-2 font-medium text-white hover:bg-primary/90 disabled:opacity-50 transition-colors"
       >
         {isLoading ? 'Verifying...' : 'Verify Code'}
       </button>
@@ -158,7 +158,7 @@ export function VerifyEmailForm() {
           type="button"
           onClick={handleResendCode}
           disabled={isResending}
-          className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 disabled:opacity-50"
+          className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/90 disabled:opacity-50"
         >
           <RefreshCw size={16} className={isResending ? 'animate-spin' : ''} />
           <span>{isResending ? 'Sending...' : 'Resend Code'}</span>
